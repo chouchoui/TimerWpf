@@ -1,0 +1,32 @@
+﻿<Window x:Class="TimerVisit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:selectFile="clr-namespace:SelectFile"
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/StyleDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel AutomationProperties.IsColumnHeader="True">
+        <DockPanel>
+            <TextBlock Grid.Column="0">源路径：</TextBlock>
+            <selectFile:SelectPathControl Grid.Column="1" SelectMode="SelectFolder" x:Name="sourcePath" ToolTip="源路径"></selectFile:SelectPathControl>
+        </DockPanel>
+
+        <TextBox Name="txtUrl" Text="http://"></TextBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0">访问间隔(分钟)</Label>
+            <TextBox Name="txtTime" Grid.Column="1" KeyDown="txtTime_KeyDown">20</TextBox>
+        </Grid>
+        <Button Name="btnVisit" Click="btnVisit_Click">访问</Button>
+        <Button Name="btnStop" Click="btnStop_Click" Visibility="Collapsed">停止</Button>
+        <TextBlock Name="label"></TextBlock>
+    </StackPanel>
+</Window>
